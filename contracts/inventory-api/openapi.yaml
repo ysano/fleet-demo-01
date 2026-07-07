@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: inventory-api
+  version: "1.0.0"
+  description: Synthetic exercise contract (generic fixture, auto-generated).
+servers:
+  - url: https://sandbox.example.invalid/v1
+    description: Synthetic exercise server (not a real endpoint)
+paths:
+  /items:
+    get:
+      operationId: list_items
+      summary: "list_items (synthetic exercise operation)"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/InventoryItem"
+components:
+  schemas:
+    InventoryItem:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        stock:
+          type: string
+        location:
+          type: string
