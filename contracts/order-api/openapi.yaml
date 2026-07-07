@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: order-api
-  version: "1.0.0"
+  version: "2.0.0"
   description: Synthetic exercise contract (generic fixture, auto-generated).
 servers:
   - url: https://sandbox.example.invalid/v1
@@ -35,17 +35,28 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Order"
+  /order/summary:
+    get:
+      operationId: get_order_summary
+      summary: "get_order_summary (synthetic exercise operation)"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
 components:
   schemas:
     Order:
       type: object
       required:
         - id
-        - status
+        - note
       properties:
         id:
           type: string
         quantity:
-          type: string
-        status:
+          type: integer
+        note:
           type: string
