@@ -29,3 +29,4 @@ jobs:
         with:
           base: 'origin/${{ github.base_ref }}:contracts/order-api/openapi.yaml'
           revision: 'contracts/order-api/openapi.yaml'
+          fail-on: 'ERR'
