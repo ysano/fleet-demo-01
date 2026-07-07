@@ -21,6 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: version marker
-        run: echo "REUSABLE_CI_VERSION_MARKER=v1"
+        run: echo "REUSABLE_CI_VERSION_MARKER=v2"
       - name: generic sanity
         run: python3 -c "import pathlib; assert pathlib.Path('src/app.py').exists(); print('sanity ok')"
