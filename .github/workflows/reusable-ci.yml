@@ -1,0 +1,26 @@
+# devops scaffold (role=distributor) — 演習適応: CI 中身のみ generic step 化
+# （workflow_call / inputs / secrets 明示宣言 / permissions 最小 の構造契約はテンプレどおり）
+name: reusable-ci
+on:
+  workflow_call:
+    inputs:
+      node-version:
+        type: string
+        required: false
+        default: "20"
+    secrets:
+      NPM_TOKEN:
+        required: false          # 明示宣言（secrets: inherit しない）
+
+permissions:
+  contents: read                 # 基線は最小
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: version marker
+        run: echo "REUSABLE_CI_VERSION_MARKER=v1"
+      - name: generic sanity
+        run: python3 -c "import pathlib; assert pathlib.Path('src/app.py').exists(); print('sanity ok')"
